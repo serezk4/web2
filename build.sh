@@ -13,7 +13,7 @@ if [ ! -d $LOG_DIR ]; then
   mkdir $LOG_DIR
 fi
 
-touch LOG_FILE
+touch $LOG_FILE
 mkdir deploy
 
 export JAVA_VERSION=21
