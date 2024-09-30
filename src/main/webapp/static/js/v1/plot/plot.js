@@ -6,6 +6,8 @@
 
 const canvas = document.getElementById('graph');
 const ctx = canvas.getContext('2d');
+canvas.width=canvas.clientWidth
+canvas.height=canvas.clientHeight
 
 /**
  * Configuration for the plot

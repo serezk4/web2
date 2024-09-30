@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.Optional;
 
 /**
  * Controller servlet.
@@ -30,8 +31,13 @@ public final class ControllerServlet extends HttpServlet {
         String y = request.getParameter("y");
         String r = request.getParameter("r");
 
+        String mode = request.getParameter("mode");
+
+        log("x: " + x + ", y: " + y + ", r: " + r + ", mode: " + mode);
+
         RequestDispatcher dispatcher;
         if (x != null && y != null && r != null) dispatcher = request.getRequestDispatcher("/areaCheck");
+        else if (mode != null && mode.equalsIgnoreCase("v2")) dispatcher = request.getRequestDispatcher("/index2.jsp");
         else dispatcher = request.getRequestDispatcher("/index.jsp");
         dispatcher.forward(request, response);
     }

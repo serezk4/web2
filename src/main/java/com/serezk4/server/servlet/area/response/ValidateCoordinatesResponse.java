@@ -13,6 +13,7 @@ public record ValidateCoordinatesResponse(
         Double y,
         Double r,
         boolean result,
+        String time,
         long bench
 ){
 }

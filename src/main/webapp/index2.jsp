@@ -1,11 +1,10 @@
-<%@ page import="com.serezk4.server.servlet.area.response.ValidateCoordinatesResponse" %>
-<%@ page import="java.util.List" %><%--
-@author serezk4
-@version 1.0
-@since 1.0
---%>
-
+<%@ page isELIgnored="true" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<!-- @author serezk4 -->
+<!-- @version 2.0 -->
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <style>
@@ -32,10 +31,12 @@
     <!--  HEADER  -->
     <header>
         <div class="credentials">
+
             <ul>
                 <li>Веб-программирование 1 @ <a href="variant.html">Вариант 21106</a></li>
                 <li>Выполнил <a href="https://my.itmo.ru/persons/412934">Дорохин Сергей Константинович</a>
                     @ <a href="https://github.com/serezk4">github</a></li>
+                <li>переключиться на: <a href="controller?mode=v1">v1.0</a>, <a href="controller?mode=v2">v2.0 (текущая)</a></li>
             </ul>
         </div>
     </header>
@@ -50,7 +51,7 @@
                     </div>
                 </td>
                 <td>
-                    <form action="controller" method="get">
+                    <form id="form" autocomplete="off">
                         <!-- X Radio -->
                         <div class="inputPlaceholder">
                             <label for="x" class="fieldName">X:</label><br>
@@ -88,20 +89,15 @@
                                    class="controlPlaceholder">
                         </div>
 
-                        <!-- R Radio Buttons -->
+                        <!-- R Button Group -->
                         <div class="inputPlaceholder">
                             <label for="r" class="fieldName">R:</label><br>
-                            <div id="r" class="radio-group controlPlaceholder">
-                                <input type="radio" name="r" id="r1" value="1">
-                                <label for="r1">1</label>
-                                <input type="radio" name="r" id="r1.5" value="1.5">
-                                <label for="r1.5">1.5</label>
-                                <input type="radio" name="r" id="r2" value="2">
-                                <label for="r2">2</label>
-                                <input type="radio" name="r" id="r2.5" value="2.5">
-                                <label for="r2.5">2.5</label>
-                                <input type="radio" name="r" id="r3" value="3">
-                                <label for="r3">3</label>
+                            <div id="r" class="button-group controlPlaceholder">
+                                <button type="button" class="r-button" value="1">1</button>
+                                <button type="button" class="r-button" value="1.5">1.5</button>
+                                <button type="button" class="r-button" value="2">2</button>
+                                <button type="button" class="r-button" value="2.5">2.5</button>
+                                <button type="button" class="r-button" value="3">3</button>
                             </div>
                         </div>
 
@@ -120,26 +116,14 @@
                     <th>Y</th>
                     <th>R</th>
                     <th>Результат</th>
+                    <th>Время</th>
                     <th>Время выполнения (нс)</th>
                 </tr>
                 </thead>
                 <tbody>
-                <%
-                    List<ValidateCoordinatesResponse> results = (List<ValidateCoordinatesResponse>) session.getAttribute("results");
-                    if (results != null) {
-                        for (ValidateCoordinatesResponse res : results) {
-                %>
-                <tr>
-                    <td><%= res.x() %></td>
-                    <td><%= res.y() %></td>
-                    <td><%= res.r() %></td>
-                    <td><%= res.result() ? "✓" : "✗" %></td>
-                    <td><%= res.bench() %></td>
-                </tr>
-                <%
-                        }
-                    }
-                %>
+
+                <!-- Results will be appended here -->
+
                 </tbody>
             </table>
         </div>
@@ -149,12 +133,11 @@
 <!-- JS Scripts -->
 
 <script src="static/js/v2/lib/jquery-3.7.1.min.js"></script>
-<script type="text/javascript" src="./static/js/v2/plot/update.js"></script>
-<script type="text/javascript" src="./static/js/v2/plot/plot.js"></script>
-<script type="text/javascript" src="./static/js/v2/net/fetch.js"></script>
+<script type="text/javascript" src="static/js/v2/plot/update.js"></script>
+<script type="text/javascript" src="static/js/v2/plot/plot.js"></script>
+<script type="text/javascript" src="static/js/v2/net/fetch.js"></script>
 
 <!-- JS Scripts -->
 
 </body>
 </html>
-

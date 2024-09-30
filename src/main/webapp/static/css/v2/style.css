@@ -54,6 +54,8 @@ canvas {
     background-image: linear-gradient(to right, rgba(0, 255, 0, 0.1) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 255, 0, 0.1) 1px, transparent 1px);
     background-size: 20px 20px;
+    height: auto;
+    width: 100%;
 }
 
 /* ------------- Scanlines Effect Over Body ------------- */
@@ -152,8 +154,16 @@ form {
     font-size: 18px;
 }
 
+.inputPlaceholder input:hover {
+    background-color: #004f00;
+}
+
 .fieldName {
     font-size: 23px !important;
+}
+
+.fieldName:hover {
+    color: #009a00;
 }
 
 .slider {
@@ -227,6 +237,11 @@ form {
     cursor: pointer;
     color: #0f0;
     font-size: 18px;
+}
+
+.button-group .r-button:hover {
+    background-color: #0a4d0a;
+    color: #0f0;
 }
 
 .button-group .r-button.selected {
